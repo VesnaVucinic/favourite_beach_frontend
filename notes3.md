@@ -160,6 +160,9 @@ function getSyllabi() {
       })
     })
 }
+
+              <img src=${beaches.attributes.image_url} height="200" width="250">
+
 ```
 
 There are many ways to do this. The above snippet is not super pretty, but it works.
