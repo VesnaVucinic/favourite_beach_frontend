@@ -12,6 +12,7 @@ function getBeaches() {
           // remember our JSON data is a bit nested due to our serializer
         beaches.data.forEach(beach => {
           // double check how your data is nested in the console so you can successfully access the attributes of each individual object
+          
           const beachMarkup = `
             <div data-id=${beach.id}>
               <h3>${beach.attributes.name}</h3>
@@ -20,7 +21,7 @@ function getBeaches() {
               <button data-id=${beach.id}>edit</button>
             </div>
             <br><br>`;
-  
+            
             document.querySelector('#beach-container').innerHTML += beachMarkup
         })
 
