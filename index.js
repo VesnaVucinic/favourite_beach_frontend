@@ -17,12 +17,13 @@ function getBeaches() {
               <h3>${beach.attributes.name}</h3>
               <p>${beach.attributes.country.name}</p>
               <p>${beach.attributes.location}</p>
+              <img src=${beach.attributes.image_url} height="200" width="250">
+              <br><br>
               <button data-id=${beach.id}>edit</button>
             </div>
             <br><br>`;
   
             document.querySelector('#beach-container').innerHTML += beachMarkup
         })
-
     })
 }
