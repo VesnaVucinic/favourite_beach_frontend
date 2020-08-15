@@ -33,7 +33,7 @@ function getBeaches() {
             document.querySelector('#beach-container').innerHTML += beachMarkup
         })
 
-    })
+})
     .then(response => response.json())
     .then(beach => {
         // console.log(beach);
@@ -52,6 +52,6 @@ function getBeaches() {
         // I am selecting container and updaing HTML
         document.querySelector('#beach-container').innerHTML += beachMarkup;
     }) 
-}
+
 
 
