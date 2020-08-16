@@ -24,6 +24,7 @@ function getBeaches() {
               <h3>${beach.attributes.name}</h3>
               <p>${beach.attributes.country.name}</p>
               <p>${beach.attributes.location}</p>
+              <p>${beach.attributes.description}</p>
               <img src=${beach.attributes.image_url} height="200" width="250">
               <br><br>
               <button data-id=${beach.id}>edit</button>
@@ -38,8 +39,7 @@ function getBeaches() {
 
 
 function createFormHandler(event) {
-    event.preventDefault()
-    
+    event.preventDefault()    
     const nameInput = document.querySelector('#input-name').value
     const countryId = parseInt(document.querySelector('#countries').value)
     const locationInput = document.querySelector('#input-location').value
@@ -49,6 +49,7 @@ function createFormHandler(event) {
     postBeach(nameInput, countryId, locationInput, descriptionInput, imageInput)
 }
 
+// in this function I am making post request to the backend
 function postBeach(name, country_id, location, description, image_url) {
     // console.log(name, country_id, location, description, image_url);
     let bodyData = {name, country_id, location, description, image_url}
@@ -61,7 +62,9 @@ function postBeach(name, country_id, location, description, image_url) {
     })
     .then(response => response.json())
     .then(beach => {
-        // console.log(beach);
+        // console.log response to see if it's created properly
+         console.log(beach);
+       //  this part is manipulate DOM in what way - show data to user
         const beachData = beach.data
         // render JSON response, render data to user to see what created, manuplate DOM by showing user what created, data is pointing to single object not array like in get fetch where I had arrey and .forEach
         const beachMarkup = `
@@ -70,7 +73,7 @@ function postBeach(name, country_id, location, description, image_url) {
         <p>${beachData.attributes.country.name}</p>
         <p>${beachData.attributes.location}</p>
         <p>${beachData.attributes.description}</p>
-        <img src=${beachData.image_url} height="200" width="250">
+        <img src=${beachData.attributes.image_url} height="200" width="250">
         <button data-id=${beachData.id}>edit</button>
         </div>
         <br><br>`;
