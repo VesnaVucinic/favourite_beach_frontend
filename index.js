@@ -32,8 +32,33 @@ function getBeaches() {
   
             document.querySelector('#beach-container').innerHTML += beachMarkup
         })
+    })
+}
 
-})
+
+
+function createFormHandler(event) {
+    event.preventDefault()
+    
+    const nameInput = document.querySelector('#input-name').value
+    const countryId = parseInt(document.querySelector('#countries').value)
+    const locationInput = document.querySelector('#input-location').value
+    const descriptionInput = document.querySelector('#input-description').value
+    const imageInput = document.querySelector('#input-url').value
+        
+    postBeach(nameInput, countryId, locationInput, descriptionInput, imageInput)
+}
+
+function postBeach(name, country_id, location, description, image_url) {
+    // console.log(name, country_id, location, description, image_url);
+    let bodyData = {name, country_id, location, description, image_url}
+
+    fetch(endPoint, {
+        // POST request
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
     .then(response => response.json())
     .then(beach => {
         // console.log(beach);
@@ -52,6 +77,6 @@ function getBeaches() {
         // I am selecting container and updaing HTML
         document.querySelector('#beach-container').innerHTML += beachMarkup;
     }) 
-
+}
 
 
